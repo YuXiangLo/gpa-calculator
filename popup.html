@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPA Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 200px;
+      padding: 10px;
+    }
+    h1 {
+      font-size: 16px;
+      margin: 0;
+      padding-bottom: 10px;
+    }
+    p {
+      margin: 5px 0;
+    }
+	button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>GPA Calculator</h1>
+  <p>GPA (4.0 Scale): <span id="gpa4_0">-</span></p>
+  <p>GPA (4.3 Scale): <span id="gpa4_3">-</span></p>
+  <p>Total Credits: <span id="totalCredits">-</span></p>
+  <button id="exportCSV">Export as CSV</button>
+  <script src="popup.js"></script>
+</body>
+</html>

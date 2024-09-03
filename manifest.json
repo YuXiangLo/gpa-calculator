@@ -4,8 +4,7 @@
   "version": "1.0",
   "description": "Calculate GPA (4.0 and 4.3 scales) from NTU grade ranking page",
   "permissions": [
-    "activeTab",
-    "scripting"
+    "activeTab"
   ],
   "action": {
     "default_popup": "popup.html",

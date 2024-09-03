@@ -51,6 +51,9 @@ function calculateGPA() {
 
 function getRowsData() {
   let rowsData = [];
+  let totalCredits = 0;
+  let totalWeightedGrades4_0 = 0;
+  let totalWeightedGrades4_3 = 0;
 
   const rows = document.querySelectorAll('.table-rows');
   rows.forEach(row => {
@@ -65,15 +68,35 @@ function getRowsData() {
       const courseNumber = courseNumberElement.textContent.trim();
       const courseTitle = courseTitleElement.textContent.trim();
 
+      const gpa4_0 = gradeConversion4_0[gradeValue];
+      const gpa4_3 = gradeConversion4_3[gradeValue];
+
       if (gradeValue) {
+        totalCredits += Number(creditValue);
+        totalWeightedGrades4_0 += Number(gpa4_0) * creditValue;
+        totalWeightedGrades4_3 += Number(gpa4_3) * creditValue;
+
         rowsData.push({
           course_number: courseNumber,
           course_title: courseTitle,
           credits: creditValue,
-          grade: gradeValue
+          grade: gradeValue,
+          gpa4_0: gpa4_0 !== undefined ? gpa4_0 : 'N/A',
+          gpa4_3: gpa4_3 !== undefined ? gpa4_3 : 'N/A'
         });
       }
     }
+  });
+
+  const overallGpa4_0 = totalCredits > 0 ? (totalWeightedGrades4_0 / totalCredits).toFixed(2) : 'N/A';
+  const overallGpa4_3 = totalCredits > 0 ? (totalWeightedGrades4_3 / totalCredits).toFixed(2) : 'N/A';
+  rowsData.unshift({
+    course_number: '',
+    course_title: 'Total GPA',
+    credits: totalCredits,
+    grade: '',
+    gpa4_0: overallGpa4_0,
+    gpa4_3: overallGpa4_3
   });
 
   return rowsData;

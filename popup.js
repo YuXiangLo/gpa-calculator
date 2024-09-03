@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Function to convert data to CSV format
 function convertToCSV(rows) {
-  let csvContent = "Course,Number,Credits,Grade\n"; // CSV header
+  let csvContent = "Course,Number,Credits,Grade,4.0 scale,4.3 scale\n"; // CSV header
   rows.forEach(row => {
-    csvContent += `${row.course_title},${row.course_number},${row.credits},${row.grade}\n`; // Append each row's data
+    csvContent += `${row.course_title},${row.course_number},${row.credits},${row.grade},${row.gpa4_0},${row.gpa4_3}\n`; // Append each row's data
   });
   return csvContent;
 }
